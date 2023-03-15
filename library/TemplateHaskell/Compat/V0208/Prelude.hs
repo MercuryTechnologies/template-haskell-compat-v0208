@@ -1,3 +1,5 @@
+{-# LANGUAGE CPP #-}
+
 module TemplateHaskell.Compat.V0208.Prelude
 ( 
   module Exports,
@@ -24,7 +26,11 @@ import Data.Either as Exports
 import Data.Fixed as Exports
 import Data.Foldable as Exports hiding (toList)
 import Data.Function as Exports hiding (id, (.))
+#if MIN_VERSION_GLASGOW_HASKELL(9, 7, 0, 0)
+import Data.Functor as Exports hiding (unzip)
+#else
 import Data.Functor as Exports
+#endif
 import Data.Int as Exports
 import Data.IORef as Exports
 import Data.Ix as Exports
