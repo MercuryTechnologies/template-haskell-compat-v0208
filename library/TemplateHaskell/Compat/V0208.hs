@@ -23,7 +23,11 @@ instanceD =
   InstanceD
 #endif
 
+#if MIN_VERSION_GLASGOW_HASKELL(9,9,0,0)
+dataD :: Cxt -> Name -> [TyVarBndr BndrVis] -> [Con] -> [Name] -> Dec
+#else
 dataD :: Cxt -> Name -> [UnitTyVarBndr] -> [Con] -> [Name] -> Dec
+#endif
 dataD cxt name varBndrs cons derivingNames =
 #if MIN_VERSION_template_haskell(2,12,0)
   DataD cxt name varBndrs Nothing cons (pure (DerivClause Nothing (map ConT derivingNames)))
