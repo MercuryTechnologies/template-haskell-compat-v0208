@@ -23,7 +23,7 @@ instanceD =
   InstanceD
 #endif
 
-#if MIN_VERSION_GLASGOW_HASKELL(9,9,0,0)
+#if MIN_VERSION_GLASGOW_HASKELL(9,9,0,0) || MIN_VERSION_template_haskell(2,21,0)
 dataD :: Cxt -> Name -> [TyVarBndr BndrVis] -> [Con] -> [Name] -> Dec
 #else
 dataD :: Cxt -> Name -> [UnitTyVarBndr] -> [Con] -> [Name] -> Dec
